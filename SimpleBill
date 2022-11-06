@@ -1,0 +1,115 @@
+package testbill;
+
+public class Bill {
+  private String Name;
+private int price;
+private int quantity;
+
+    Bill(String name, String price, String quantity) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+
+
+    public Bill(String Name, int price, int quantity) {
+        this.Name = Name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+@Override
+    public String toString(){
+        return(
+                "Name of product is: "+Name+"\n"+
+                "Price of product:  "+ price+"\n"+
+                "Quantity : "+quantity);
+                
+    }
+    public int bill(){
+      int bill=quantity*price;
+       return bill;
+    }
+}
+
+package testbill;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+public class Run {
+    private ArrayList arr;
+    public Run() {
+       arr= new ArrayList();
+    }
+    public void addItem() {
+        String Name = JOptionPane.showInputDialog("Enter name");   
+        String price = JOptionPane.showInputDialog("Enter price of item ");
+        String quantity = JOptionPane.showInputDialog("Enter the quantity of item");
+arr.add(new Bill(Name,price,quantity));
+    }
+    public void DeleteItem() {
+        String name = JOptionPane.showInputDialog("Enter name of item whose data you wish to remove  ");
+        for (int i = 0; i < arr.size(); i++) {
+            Bill s = (Bill) arr.get(i);
+            if (name.equals(s.getName()));
+            {
+                arr.remove(s);
+                JOptionPane.showMessageDialog(null, "deleted record of " + s.toString());
+                break;
+            }
+        }
+    }
+        public void ShowAll() {
+        String a = "Total Item record =" + arr.size()+"\n";
+        for (int i = 0; i < arr.size(); i++) {
+            Bill t = (Bill) arr.get(i);
+            a = a + t.toString();
+            JOptionPane.showMessageDialog(null, a);
+
+        }
+    } 
+   
+}
+
+       
+            
+      
+
+package testbill;
+
+import javax.swing.JOptionPane;
+public class Store {
+    public static void main(String[] args) {
+        Run rec= new Run();
+        String menu = " Press 1 to add  record" + "\n"+
+                " Press 2 to delete record"+"\n+"+
+                "press 3 to show all items"+"\n"+
+                "press 0 to exit";
+        while(0==0){
+            String input = JOptionPane.showInputDialog(menu);
+            switch(input.charAt(0)){
+              case '1':
+               rec.addItem();
+                   break;
+              case '2':
+                    rec.DeleteItem();
+                    break;
+              case '3':
+                  rec.ShowAll();
+                  break;
+                  case '0':
+                  
+                  System.exit(0);
+                   break;
+              default :
+                  System.out.println("invalid key");
+                  break;
+}
+        }
+        
+    }
+}
