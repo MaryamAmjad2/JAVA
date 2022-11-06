@@ -1,0 +1,112 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+public class Q14 {
+public static void main(String[] args) {
+     GUI g = new GUI();
+       }
+}
+package q14;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
+public class GUI  implements ActionListener {
+    public GUI() {
+        GuiTest();}
+    JFrame m;
+    JButton b1, b2, b3, b4, b5, b6;
+    JLabel lab;
+    JTextField one,two;
+   JPanel p,p2 ;
+    public void GuiTest() {
+        m = new JFrame();
+        Container c = m.getContentPane();
+        p = new JPanel();
+        p2= new JPanel();
+        c.setLayout( new BorderLayout());
+        b1 = new JButton("Add ");
+        b2= new JButton("Multiply");
+        b3 = new JButton("Divide");
+        one = new JTextField(20);
+         two = new JTextField(20);
+        JLabel L1= new JLabel("Enter first Value");
+        JLabel L2= new JLabel("Enter seconds Value");
+       p.setLayout(new GridLayout(0,1));
+       p2.setLayout(new GridLayout(0,1));
+        p.add(L1);
+        p.add(one);
+        p.add(L2);
+        p.add(two);
+        p2.add(b1);
+        p2.add(b2);
+        p2.add(b3);
+        c.add(p, BorderLayout.NORTH);
+        c.add(p2,BorderLayout.SOUTH);
+        m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        m.setSize(300,200);
+        m.setVisible(true);
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
+}  public void Add(){
+    String i =one.getText();
+    String j = two.getText();
+    
+    if(i.equals(null) || j.equals(j)){
+       JOptionPane.showMessageDialog(null, "No text");
+       
+   }
+    else if(i!=null || j!=null) {
+    int a = Integer.parseInt(i);
+    int b = Integer.parseInt(j);
+    int sum =0 ;
+    sum=a+b;
+    JOptionPane.showMessageDialog(null, sum);
+    
+}
+}
+public void Multiply(){
+   String i =one.getText();
+    String j = two.getText();
+   if(i.equals(null) || j.equals(j)){
+       JOptionPane.showMessageDialog(null, "No text");
+    }
+    else{
+    int a = Integer.parseInt(i);
+    int b = Integer.parseInt(j);
+    int mul =0 ;
+    mul=a*b;
+    JOptionPane.showMessageDialog(null, mul);  
+}
+}
+public void Div(){
+     String i =one.getText();
+    String j = two.getText();
+    
+    int div =0 ;
+    if(i.equals(null) || j.equals(j)){
+       JOptionPane.showMessageDialog(null, "No text");
+   }
+    else{
+    int a = Integer.parseInt(i);
+    int b = Integer.parseInt(j);
+    div=a/b;
+    JOptionPane.showMessageDialog(null, div);
+}}
+ @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == b1) {
+            Add();
+        } else if (ae.getSource() == b2) {
+            Multiply();
+        } 
+        else if (ae.getSource() == b3)
+        {
+         Div();   
+        }
+    }
+}
